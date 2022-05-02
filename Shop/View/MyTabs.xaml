@@ -18,7 +18,7 @@
         <Tab
             Title="Home"
             Icon="home.png">
-            <ShellContent ContentTemplate="{DataTemplate view:HomePage}"/>
+            <ShellContent ContentTemplate="{DataTemplate view:MVUPage}"/>
         </Tab>
     </TabBar>
 </Shell>
