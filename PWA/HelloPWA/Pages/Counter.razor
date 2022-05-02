@@ -1,4 +1,6 @@
 ﻿@page "/counter"
+@inject ServiceBusClient sbClient;
+@using Azure.Messaging.ServiceBus
 
 <PageTitle>Counter</PageTitle>
 
@@ -8,11 +10,63 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<h1>@DataFromServiceBus</h1>
+
 @code {
+    private string DataFromServiceBus;
+   
+    string queueName = "somequeue";
+    ServiceBusProcessor processor;
+
+
     private int currentCount = 0;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+
+        // create a processor that we can use to process the messages
+        processor = sbClient.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+
+        try
+        {
+            // add handler to process messages
+            processor.ProcessMessageAsync += MessageHandler;
+
+            // add handler to process any errors
+            processor.ProcessErrorAsync += ErrorHandler;
+
+            // start processing 
+            await processor.StartProcessingAsync();
+
+
+        }
+        catch (Exception e)
+        {
+            DataFromServiceBus = e.Message;
+        }
+       
+    }
+
+    // handle received messages
+    async Task MessageHandler(ProcessMessageEventArgs args)
+    {
+        string body = args.Message.Body.ToString();
+        DataFromServiceBus = body;
+        await args.CompleteMessageAsync(args.Message);
+    }
+
+    // handle any errors when receiving messages
+    private Task ErrorHandler(ProcessErrorEventArgs args)
+    {
+ 
+        return Task.CompletedTask;
+    }
 
     private void IncrementCount()
     {
+        // Whatever property is set here, statehascvhanged will make sure the UI is reflected
         currentCount++;
+        StateHasChanged();
     }
 }
