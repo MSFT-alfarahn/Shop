@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Shop.ViewModel
-{
-    public class HomeViewModel
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace Shop.ViewModel;
+
+    public partial class HomeViewModel : BaseViewModel
     {
-        public string SomeData { get; set; } = "Some data from your viewmodel";
+        [ObservableProperty]
+        public string someData;
+
+        public HomeViewModel()
+        {
+            Console.WriteLine(SomeData);
+        }
     }
-}
