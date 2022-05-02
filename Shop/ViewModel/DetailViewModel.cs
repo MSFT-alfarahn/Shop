@@ -1,5 +1,7 @@
 ﻿
 
+using Shop.ServiceManager;
+
 namespace Shop.ViewModel;
    
     [QueryProperty("Token", nameof(Token))]
@@ -7,4 +9,9 @@ namespace Shop.ViewModel;
     {
         [ObservableProperty]
         private string token;
-    }
+        public StateManager Manager { get; }
+        public DetailViewModel(StateManager stateManager  )
+        {
+            Manager = stateManager; 
+        }
+}

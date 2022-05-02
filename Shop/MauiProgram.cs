@@ -2,6 +2,7 @@
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input; 
 global using Shop.ViewModel;
+using Shop.ServiceManager;
 
 namespace Shop;
 
@@ -18,6 +19,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				fonts.AddFont("junegull.ttf", "JuneGull");
 			});
+
+		RegisterDependencies(builder.Services);
 
 		builder.Services.AddSingleton<HomeViewModel>();
 		builder.Services.AddSingleton<HomePage>();
@@ -37,4 +40,9 @@ public static class MauiProgram
 
 		return builder.Build();
 	}
+
+    private static void RegisterDependencies(IServiceCollection services)
+    {
+		services.AddSingleton<StateManager>();
+    }
 }

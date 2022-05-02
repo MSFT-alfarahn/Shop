@@ -8,7 +8,11 @@
         <Label Text="This is the token passed by navigation!"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-       
+
+        <Label Text="{Binding Manager.SomeShareData}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        
         <Label Text="{Binding Token}"
                 Margin="20,20,20,0"
                 FontFamily="Junegull"

@@ -1,4 +1,5 @@
 ﻿
+using Shop.ServiceManager;
 
 namespace Shop.ViewModel;
 
@@ -6,6 +7,12 @@ namespace Shop.ViewModel;
     {
         [ObservableProperty]
         public string someData;
+        public StateManager Manager { get; }
+        public HomeViewModel(StateManager stateManager)
+        {
+            Manager = stateManager;
+        }
+
 
         [ICommand]
         private async void GoToDetail()
