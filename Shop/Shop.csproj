@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\junegull.ttf" />
 	  <None Remove="Resources\Images\apple.svg" />
 	  <None Remove="Resources\Images\bananas.svg" />
 	  <None Remove="Resources\Images\cart.svg" />
@@ -64,10 +65,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModel\" />
-	</ItemGroup>
-
-	<ItemGroup>
+	  <MauiXaml Update="View\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\MyTabs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

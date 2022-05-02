@@ -2,8 +2,9 @@
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Shop.MyTabs"
+             xmlns:view="clr-namespace:Shop"
              Title="MyTabs">
-    <ContentPage Title="PageOne" IconImageSource="home.png" />
+    <view:HomePage Title="Home" IconImageSource="home.png" />
     <ContentPage Title="PageOne"  IconImageSource="home.png" />
     <ContentPage Title="PageOne"  IconImageSource="home.png" />
 </TabbedPage>
