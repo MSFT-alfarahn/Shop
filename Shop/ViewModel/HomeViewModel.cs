@@ -1,7 +1,5 @@
 ﻿
 
-using CommunityToolkit.Mvvm.ComponentModel;
-
 namespace Shop.ViewModel;
 
     public partial class HomeViewModel : BaseViewModel
@@ -9,8 +7,7 @@ namespace Shop.ViewModel;
         [ObservableProperty]
         public string someData;
 
-        public HomeViewModel()
-        {
-            Console.WriteLine(SomeData);
-        }
+        [ICommand]
+        private void GoToDetail() // But on the page you have use => GoToDetailCommand
+         => Shell.Current.GoToAsync($"{nameof(DetailPage)}?Token={Guid.NewGuid()}");
     }

@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-
+﻿
 namespace Shop.ViewModel;
 
     public abstract class BaseViewModel : ObservableObject

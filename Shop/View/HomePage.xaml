@@ -17,6 +17,13 @@
             FontFamily="JuneGull"
             FontSize="40"
             Text="{Binding SomeData}"/>
-        
+
+        <Button
+            Margin="20,0,20,0"
+            BackgroundColor="Black"
+            TextColor="White"
+            Text="Go To Detail"
+            Command="{Binding GoToDetailCommand}"/>
+
     </StackLayout>
 </ContentPage>

@@ -1,4 +1,3 @@
-using Shop.ViewModel;
 
 namespace Shop;
 
