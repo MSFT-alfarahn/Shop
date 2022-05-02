@@ -27,6 +27,10 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DetailPage>();
 		Routing.RegisterRoute(nameof(DetailPage), typeof(DetailPage));
 
+		builder.Services.AddSingleton<DeepViewModel>();
+		builder.Services.AddSingleton<DeepPage>();
+		Routing.RegisterRoute(nameof(DeepPage), typeof(DeepPage));
+
 		return builder.Build();
 	}
 }
