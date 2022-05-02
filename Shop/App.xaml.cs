@@ -6,6 +6,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new MyTabs();//new AppShell();
+		MainPage = new MyTabs(); //The tabs are now based on Shell and all the benefits!
 	}
 }

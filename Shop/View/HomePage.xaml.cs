@@ -4,9 +4,9 @@ namespace Shop;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
+	public HomePage(HomeViewModel homeViewModel)
 	{
 		InitializeComponent();
-		BindingContext = new HomeViewModel();
+		BindingContext = homeViewModel;
 	}
 }

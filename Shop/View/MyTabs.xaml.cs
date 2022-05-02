@@ -1,6 +1,6 @@
 namespace Shop;
 
-public partial class MyTabs : TabbedPage
+public partial class MyTabs : Shell
 {
 	public MyTabs()
 	{
