@@ -12,9 +12,8 @@ namespace Shop.ViewModel
         [ObservableProperty]
         private string platform;
 
-        public NativeViewModel()
+        public NativeViewModel(MyService service)
         {
-            MyService service = new MyService();
             Platform = service.GetPlatform();
         }
     }

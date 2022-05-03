@@ -53,6 +53,6 @@ public static class MauiProgram
     private static void RegisterDependencies(IServiceCollection services)
     {
 		services.AddSingleton<StateManager>();
-		//services.AddSingleton<NativeService>();
+		services.AddSingleton<MyService>();
     }
 }
