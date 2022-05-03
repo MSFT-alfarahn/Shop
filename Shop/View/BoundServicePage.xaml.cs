@@ -2,8 +2,9 @@ namespace Shop;
 
 public partial class BoundServicePage : ContentPage
 {
-	public BoundServicePage()
+	public BoundServicePage(BoundServiceViewModel boundServiceViewModel)
 	{
 		InitializeComponent();
+		BindingContext = boundServiceViewModel;
 	}
 }

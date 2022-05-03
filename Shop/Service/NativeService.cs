@@ -1,5 +1,5 @@
 ﻿
-namespace Shop.Service;
+namespace Shop;
 
 public partial class NativeService
 {

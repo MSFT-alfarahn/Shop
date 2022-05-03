@@ -2,7 +2,6 @@
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input; 
 global using Shop.ViewModel;
-using Shop.Service;
 
 namespace Shop;
 
@@ -54,5 +53,6 @@ public static class MauiProgram
     {
 		services.AddSingleton<StateManager>();
 		services.AddSingleton<NativeService>();
+		services.AddSingleton<BoundServiceAbstraction>();
     }
 }

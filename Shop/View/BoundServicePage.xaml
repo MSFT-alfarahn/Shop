@@ -4,8 +4,20 @@
              x:Class="Shop.BoundServicePage"
              Title="BoundServicePage">
     <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
+        <Button
+            Margin="20"
+            Text="GetDataFromBoundService"
+            Command="{Binding GetDataFromBoundServiceCommand}"/>
+        <Label 
+                Margin="20,0,20,10"
+                Text="Data from Bound Service"
                 VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                FontAttributes="Bold"/>
+        <Label 
+                Text="{Binding DataFromBoundService}"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" 
+                HorizontalTextAlignment="Center"/>
     </StackLayout>
 </ContentPage>

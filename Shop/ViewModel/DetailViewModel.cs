@@ -1,5 +1,5 @@
 ﻿
-using Shop.Service;
+using Shop;
 
 namespace Shop.ViewModel;
    
