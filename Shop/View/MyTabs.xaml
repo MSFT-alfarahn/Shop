@@ -6,6 +6,16 @@
              Title="MyTabs">
     <TabBar>
         <Tab
+            Title="Bound Service"
+            Icon="fork.png">
+            <ShellContent ContentTemplate="{DataTemplate view:BoundServicePage}"/>
+        </Tab>
+        <Tab
+            Title="Native"
+            Icon="cart.png">
+            <ShellContent ContentTemplate="{DataTemplate view:BoundServicePage}"/>
+        </Tab>
+        <Tab
             Title="Home"
             Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate view:HomePage}"/>

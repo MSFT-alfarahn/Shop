@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Shop.HomePage"
              Title="HomePage">
+    <Shell.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            HeightRequest="30">
+            <Label 
+                FontFamily="JuneGull"
+                FontSize="Large"
+                TextColor="{StaticResource Primary}"
+                VerticalOptions="CenterAndExpand"
+                Text="Search deals near you"  />
+        </StackLayout>
+    </Shell.TitleView>
     <StackLayout>
 
         <Label Text="{Binding Manager.SomeShareData}"

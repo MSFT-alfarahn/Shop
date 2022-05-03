@@ -38,6 +38,15 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MVUPage>();
 		Routing.RegisterRoute(nameof(MVUPage), typeof(MVUPage));
 
+		builder.Services.AddSingleton<BoundServiceViewModel>();
+		builder.Services.AddSingleton<BoundServicePage>();
+		Routing.RegisterRoute(nameof(BoundServicePage), typeof(BoundServicePage));
+
+		builder.Services.AddSingleton<NativeViewModel>();
+		builder.Services.AddSingleton<NativePage>();
+		Routing.RegisterRoute(nameof(NativePage), typeof(NativePage));
+
+
 		return builder.Build();
 	}
 
