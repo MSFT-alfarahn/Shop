@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace Shop.ViewModel
 {
-    public class NativeViewModel : BaseViewModel
+    public partial class NativeViewModel : BaseViewModel
     {
+        [ObservableProperty]
+        private string platform;
+
+        public NativeViewModel()
+        {
+            MyService service = new MyService();
+            Platform = service.GetPlatform();
+        }
     }
 }

@@ -2,8 +2,9 @@ namespace Shop;
 
 public partial class NativePage : ContentPage
 {
-	public NativePage()
+	public NativePage(NativeViewModel nativeViewModel)
 	{
 		InitializeComponent();
+		BindingContext = nativeViewModel;
 	}
 }

@@ -4,7 +4,15 @@
              x:Class="Shop.NativePage"
              Title="NativePage">
     <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
+        <Label  
+                FontSize="Large"
+                Text="Native Platform:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        <Label  
+                FontAttributes="Bold"
+                FontSize="40"
+                Text="{Binding Platform}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
     </StackLayout>
