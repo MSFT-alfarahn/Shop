@@ -1,7 +1,7 @@
 ﻿
 namespace Shop.Service;
 
-public partial class MyService
+public partial class NativeService
 {
     public partial string GetPlatform()
     {
