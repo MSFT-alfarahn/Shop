@@ -1,6 +1,5 @@
 ﻿
-
-using Shop.ServiceManager;
+using Shop.Service;
 
 namespace Shop.ViewModel;
    

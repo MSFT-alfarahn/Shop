@@ -13,7 +13,7 @@
         <Tab
             Title="Native"
             Icon="cart.png">
-            <ShellContent ContentTemplate="{DataTemplate view:BoundServicePage}"/>
+            <ShellContent ContentTemplate="{DataTemplate view:NativePage}"/>
         </Tab>
         <Tab
             Title="Home"

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.ServiceManager
+namespace Shop.Service
 {
     public class StateManager
     {
