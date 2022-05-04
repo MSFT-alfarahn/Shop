@@ -6,6 +6,11 @@
              Title="MyTabs">
     <TabBar>
         <Tab
+            Title="Dynamic Fruit"
+            Icon="bananas.png">
+            <ShellContent ContentTemplate="{DataTemplate view:DynamicFruitPage}"/>
+        </Tab>
+        <Tab
             Title="Bound Service"
             Icon="fork.png">
             <ShellContent ContentTemplate="{DataTemplate view:BoundServicePage}"/>

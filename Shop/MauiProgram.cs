@@ -45,6 +45,9 @@ public static class MauiProgram
 		builder.Services.AddSingleton<NativePage>();
 		Routing.RegisterRoute(nameof(NativePage), typeof(NativePage));
 
+		builder.Services.AddSingleton<DynamicFruitViewModel>();
+		builder.Services.AddSingleton<DynamicFruitPage>();
+		Routing.RegisterRoute(nameof(DynamicFruitPage), typeof(DynamicFruitPage));
 
 		return builder.Build();
 	}
