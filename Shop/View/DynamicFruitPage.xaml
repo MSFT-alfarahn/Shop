@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:Shop.Model.Fruits"
+             xmlns:viewmodel="clr-namespace:Shop.ViewModel"
              x:Class="Shop.DynamicFruitPage"
              Title="DynamicFruitPage">
+    <ContentPage.BindingContext>
+        <viewmodel:DynamicFruitViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+
+        <DataTemplate x:Key="BananasTemplate">
+            <Label Text="Bananas"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="WatermelonTemplate">
+            <Label Text="Bananas"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="GuavaTemplate">
+            <Label Text="Bananas"/>
+        </DataTemplate>
+        
+        <view:FruitTemplateSelector 
+                x:Key="FruitTemplateSelector"
+                DefaultTemplate="{StaticResource BananasTemplate}"
+                BananasTemplate="{StaticResource BananasTemplate}"
+                GuavaTemplate="{StaticResource GuavaTemplate}"
+                WatermelonTemplate="{StaticResource WatermelonTemplate}"/>
+
+    </ContentPage.Resources>
     <Shell.TitleView>
         <StackLayout 
             Orientation="Horizontal"
@@ -15,20 +42,13 @@
                 Text="Dynamic Fruit"  />
         </StackLayout>
     </Shell.TitleView>
-    <StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"
-                         Orientation="Horizontal"
-                         Margin="13,10,0,0">
-        <!--BindableLayout.ItemTemplate>
-            <DataTemplate>
-                <controls:CircleImage Source="{Binding}"
-                                              Aspect="AspectFill"
-                                              WidthRequest="44"
-                                              HeightRequest="44"
-                                              BorderColor="LightGray"
-                                              BorderThickness="1"
-                                              Margin="-13,0,0,0" />
-            </DataTemplate>
-        </BindableLayout.ItemTemplate-->
+    <StackLayout>
+        <FlexLayout BindableLayout.ItemsSource="{Binding ChosenFruit}"
+                        BindableLayout.ItemTemplateSelector="{StaticResource FruitTemplateSelector}"
+                        Wrap="Wrap"
+                        JustifyContent="Start"
+                        Margin="0,10,0,0" />
+
         <StackLayout
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="End"

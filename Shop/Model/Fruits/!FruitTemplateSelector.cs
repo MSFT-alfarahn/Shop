@@ -1,7 +1,6 @@
-﻿
-namespace Shop.Model.Fruits.Template;
+﻿namespace Shop.Model.Fruits;
 
-public class TechItemTemplateSelector : DataTemplateSelector
+public class FruitTemplateSelector : DataTemplateSelector
 {
     public DataTemplate DefaultTemplate { get; set; }
     public DataTemplate GuavaTemplate { get; set; }
@@ -13,7 +12,7 @@ public class TechItemTemplateSelector : DataTemplateSelector
         if (item.GetType() == typeof(Guava))
             return GuavaTemplate;
         else if (item.GetType() == typeof(WatermelomTemplate))
-             return WatermelonTemplate;
+            return WatermelonTemplate;
         else if (item.GetType() == typeof(BananasTemplate))
             return BananasTemplate;
         else
