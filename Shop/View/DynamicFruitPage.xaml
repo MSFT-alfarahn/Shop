@@ -40,11 +40,61 @@
         </DataTemplate>
 
         <DataTemplate x:Key="WatermelonTemplate">
-            <Label Text="WaterMelon"/>
+            <StackLayout
+                Orientation="Horizontal">
+               <Label 
+                   Margin="10"
+                   Padding="10"
+                   BackgroundColor="GreenYellow"
+                   VerticalOptions="Center"
+                   Text="WaterMelon"/>
+                <Image
+                    VerticalOptions="Center"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Source="Watermelon.png"/>
+                <Image
+                    VerticalOptions="Center"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Source="Watermelon.png"/>
+                <Image
+                    VerticalOptions="Center"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Source="Watermelon.png"/>
+            </StackLayout>
         </DataTemplate>
         
         <DataTemplate x:Key="GuavaTemplate">
-            <Label Text="Guava"/>
+            <StackLayout
+                BackgroundColor="Red"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical">
+                <Label 
+                   Margin="10"
+                   Padding="10"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="HotPink"
+                   VerticalOptions="Center"
+                   Text="Guava"/>
+                <Image
+                    VerticalOptions="Center"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Source="Guava.png"/>
+                <Image
+                    VerticalOptions="Center"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Source="Guava.png"/>
+                <Image
+                    VerticalOptions="Center"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Source="Guava.png"/>
+            </StackLayout>
         </DataTemplate>
         
         <view:FruitTemplateSelector 
