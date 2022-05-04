@@ -11,15 +11,25 @@
     <ContentPage.Resources>
 
         <DataTemplate x:Key="BananasTemplate">
-            <AbsoluteLayout Margin="20">
+            <AbsoluteLayout
+                Padding="0">
+                <Frame
+                    BackgroundColor="LightSeaGreen"
+                    AbsoluteLayout.LayoutBounds="10,10,300,300"/>
+                <Image
+                    Source="Bananas.png"
+                    AbsoluteLayout.LayoutBounds="20,90,100,100"/>
+                <Entry
+                    Placeholder="Bananas text placeholder"
+                    AbsoluteLayout.LayoutBounds="20,200,200,50"/>
                 <BoxView Color="Yellow"
-                   AbsoluteLayout.LayoutBounds="0, 10, 200, 5" />
+                   AbsoluteLayout.LayoutBounds="15, 15, 200, 5" />
                 <BoxView Color="Orange"
-                   AbsoluteLayout.LayoutBounds="0, 20, 200, 5" />
+                   AbsoluteLayout.LayoutBounds="15, 20, 200, 5" />
                 <BoxView Color="Orange"
-                   AbsoluteLayout.LayoutBounds="10, 0, 5, 65" />
+                   AbsoluteLayout.LayoutBounds="15, 15, 5, 65" />
                 <BoxView Color="Yellow"
-                   AbsoluteLayout.LayoutBounds="20, 0, 5, 65" />
+                   AbsoluteLayout.LayoutBounds="20, 15, 5, 65" />
                 <Label 
                    Margin="20"
                    Text="Banana Template"
