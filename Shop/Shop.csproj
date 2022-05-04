@@ -74,6 +74,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Model\Fruits\Template\BananasTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Model\Fruits\Template\GuavaTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Model\Fruits\Template\WatermelomTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\BoundServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
