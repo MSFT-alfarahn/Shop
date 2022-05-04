@@ -11,6 +11,11 @@
             <ShellContent ContentTemplate="{DataTemplate view:DynamicFruitPage}"/>
         </Tab>
         <Tab
+            Title="Form"
+            Icon="bananas.png">
+            <ShellContent ContentTemplate="{DataTemplate view:FormPage}"/>
+        </Tab>
+        <Tab
             Title="Bound Service"
             Icon="fork.png">
             <ShellContent ContentTemplate="{DataTemplate view:BoundServicePage}"/>

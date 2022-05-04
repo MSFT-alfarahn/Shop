@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Shop.ViewModel"
+             x:Class="Shop.FormPage"
+             Title="FormPage">
+    <ContentPage.BindingContext>
+        <viewmodel:FormViewModel />
+    </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            HeightRequest="30">
+            <Label 
+                FontFamily="JuneGull"
+                FontSize="Large"
+                TextColor="{StaticResource Primary}"
+                VerticalOptions="CenterAndExpand"
+                Text="Dynamic Fruit"  />
+        </StackLayout>
+    </Shell.TitleView>
+    <StackLayout>
+        <Label Text="Welcome to .NET MAUI!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        <Entry
+            IsEnabled="{Binding NotBusy}"
+            FontSize="Large"
+            Text="Hello"/>
+        <Entry
+            IsEnabled="{Binding NotBusy}"
+            FontSize="Large"
+            Placeholder="Hello some text"/>
+        <Button
+            Command="{Binding SubmitCommand}"
+            IsEnabled="{Binding NotBusy}"
+            Text="Submit"/>
+        <ActivityIndicator
+            HeightRequest="100"
+            WidthRequest="100"
+            IsRunning="{Binding IsBusy}"/>
+    </StackLayout>
+</ContentPage>

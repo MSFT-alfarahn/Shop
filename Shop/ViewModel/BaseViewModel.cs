@@ -1,8 +1,12 @@
 ﻿
 namespace Shop.ViewModel;
 
-    public abstract class BaseViewModel : ObservableObject
+    public partial class BaseViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private bool notBusy = true;
+        [ObservableProperty]
+        private bool isBusy;
         public virtual void OnAppearing() { }
         public virtual void OnDisAppearing() { }
     }
