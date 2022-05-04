@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Shop.NativePage"
              Title="NativePage">
+    <Shell.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            HeightRequest="30">
+            <Label 
+                FontFamily="JuneGull"
+                FontSize="Large"
+                TextColor="{StaticResource Primary}"
+                VerticalOptions="CenterAndExpand"
+                Text="Native"  />
+        </StackLayout>
+    </Shell.TitleView>
     <StackLayout>
         <Label  
                 FontSize="Large"

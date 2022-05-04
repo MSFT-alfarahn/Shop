@@ -12,7 +12,7 @@
                 FontSize="Large"
                 TextColor="{StaticResource Primary}"
                 VerticalOptions="CenterAndExpand"
-                Text="Search deals near you"  />
+                Text="Navigate w. Parameters"  />
         </StackLayout>
     </Shell.TitleView>
     <StackLayout>
