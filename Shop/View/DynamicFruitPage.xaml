@@ -15,9 +15,42 @@
                 Text="Dynamic Fruit"  />
         </StackLayout>
     </Shell.TitleView>
-    <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+    <StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"
+                         Orientation="Horizontal"
+                         Margin="13,10,0,0">
+        <!--BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <controls:CircleImage Source="{Binding}"
+                                              Aspect="AspectFill"
+                                              WidthRequest="44"
+                                              HeightRequest="44"
+                                              BorderColor="LightGray"
+                                              BorderThickness="1"
+                                              Margin="-13,0,0,0" />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate-->
+        <StackLayout
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="End"
+            Orientation="Horizontal">
+            <Button  
+                Margin="10,10,5,10"
+                BackgroundColor="Yellow"
+                TextColor="Black"
+                Text="Bananas"/>
+            <Button
+                BackgroundColor="Pink"
+                TextColor="Black"
+                Margin="5,10,5,10"
+                Text="Guava"/>
+            <Button
+                BackgroundColor="GreenYellow"
+                TextColor="Black"
+                Margin="5,10,5,10"
+                Text="Watermelon"/>
+        </StackLayout>
+
+
     </StackLayout>
+
 </ContentPage>
