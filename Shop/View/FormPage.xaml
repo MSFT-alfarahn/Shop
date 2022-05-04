@@ -26,16 +26,13 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         <Entry
-            IsEnabled="{Binding NotBusy}"
             FontSize="Large"
             Text="Hello"/>
         <Entry
-            IsEnabled="{Binding NotBusy}"
             FontSize="Large"
             Placeholder="Hello some text"/>
         <Button
             Command="{Binding SubmitCommand}"
-            IsEnabled="{Binding NotBusy}"
             Text="Submit"/>
         <ActivityIndicator     
             HeightRequest="100"
