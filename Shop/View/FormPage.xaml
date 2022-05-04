@@ -14,14 +14,13 @@
             <Label 
                 FontFamily="JuneGull"
                 FontSize="Large"
-                TextColor="{StaticResource Primary}"
                 VerticalOptions="CenterAndExpand"
                 Text="Dynamic Fruit"  />
         </StackLayout>
     </Shell.TitleView>
     <StackLayout
         Padding="20">
-        <Label Text="Welcome to .NET MAUI!"
+        <Label  x:Name="namelabal"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         <Entry
