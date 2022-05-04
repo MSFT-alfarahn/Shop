@@ -8,5 +8,6 @@ namespace Shop.Model.Fruits
 {
     public class Bananas : Fruit
     {
+        public string BananaPlaceholder => "this placeholder is only for BananaTemplate";
     }
 }

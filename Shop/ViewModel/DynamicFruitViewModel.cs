@@ -14,9 +14,9 @@ public partial class DynamicFruitViewModel :  BaseViewModel
 
     [ICommand]
     private void ChooseGuava()
-    => ChosenFruit = new List<Fruit> { new Guava() };
+        => ChosenFruit = new List<Fruit> { new Guava() };
 
     [ICommand]
     private void ChooseBananas()
-    => ChosenFruit = new List<Fruit> { new Bananas() };
+        => ChosenFruit = new List<Fruit> { new Bananas() };
 }
