@@ -44,5 +44,8 @@
             Text="Kill CPU 10 Seconds"
             BackgroundColor="Red"
             Command="{Binding KillCPUCommand}"/>
+        <Button
+            Text="Throw unhandled exception"
+            Command="{Binding ThrowUnhandledCommand}"/>
     </StackLayout>
 </ContentPage>

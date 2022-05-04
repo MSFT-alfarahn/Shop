@@ -18,7 +18,9 @@ namespace Shop;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
+    public static TelemetryClient Telemetry { get; private set; }
+
+    public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
@@ -74,11 +76,24 @@ public static class MauiProgram
 			b.AddApplicationInsights("4e64ad7b-babd-497a-9e65-548e7359450b");
 			b.SetMinimumLevel(LogLevel.Debug);
         });
-		services.AddSingleton(GetTelemetryClient());
+		Telemetry = GetTelemetryClient();
+		services.AddSingleton(Telemetry);
 		services.AddSingleton<StateManager>();
 		services.AddSingleton<NativeService>();
 		services.AddSingleton<BoundServiceAbstraction>();
-    }
+
+
+		AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+		{
+			Task.Run(async () =>
+			{
+				System.Diagnostics.Debug.WriteLine("AppDomain.CurrentDomain.UnhandledException: {0}. IsTerminating: {1}", e.ExceptionObject, e.IsTerminating);
+				await Task.Delay(1000).ConfigureAwait(false);
+				Telemetry.TrackException(e.ExceptionObject as Exception);
+				await Task.Delay(4000).ConfigureAwait(false);
+			}).Wait();
+		};
+	}
 
 	private static TelemetryClient GetTelemetryClient()
 	{

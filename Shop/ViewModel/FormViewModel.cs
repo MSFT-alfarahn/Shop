@@ -40,4 +40,10 @@ public partial class FormViewModel : BaseViewModel
             if (num > 1000000) { num = 0; }
         }
     }
+
+    [ICommand]
+    public void ThrowUnhandled()
+    {
+        int.Parse("invalid");
+    }
 }
