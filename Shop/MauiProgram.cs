@@ -3,6 +3,17 @@ global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input; 
 global using Shop.ViewModel;
 
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.ApplicationInsights;
+
 namespace Shop;
 
 public static class MauiProgram
@@ -17,7 +28,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				fonts.AddFont("junegull.ttf", "JuneGull");
-			});
+			});	
 
 		RegisterDependencies(builder.Services);
 
@@ -58,8 +69,38 @@ public static class MauiProgram
 
     private static void RegisterDependencies(IServiceCollection services)
     {
+		services.AddLogging(b =>
+        {
+			b.AddApplicationInsights("4e64ad7b-babd-497a-9e65-548e7359450b");
+			b.SetMinimumLevel(LogLevel.Debug);
+        });
+		services.AddSingleton(GetTelemetryClient());
 		services.AddSingleton<StateManager>();
 		services.AddSingleton<NativeService>();
 		services.AddSingleton<BoundServiceAbstraction>();
     }
+
+	private static TelemetryClient GetTelemetryClient()
+	{
+		TelemetryConfiguration config = TelemetryConfiguration.CreateDefault();
+		config.ConnectionString = "InstrumentationKey=4e64ad7b-babd-497a-9e65-548e7359450b;IngestionEndpoint=https://westus2-2.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/";
+		QuickPulseTelemetryProcessor quickPulseProcessor = null;
+		config.DefaultTelemetrySink.TelemetryProcessorChainBuilder
+			.Use((next) =>
+			{
+				quickPulseProcessor = new QuickPulseTelemetryProcessor(next);
+				return quickPulseProcessor;
+			})
+			.Build();
+
+		var quickPulseModule = new QuickPulseTelemetryModule
+		{
+			AuthenticationApiKey = "62nqjo8mrn3b1tm8v6bpfzu1n7ib17st1oaaykwp",
+		};
+		quickPulseModule.Initialize(config);
+		quickPulseModule.RegisterTelemetryProcessor(quickPulseProcessor);
+		TelemetryClient client = new(config);
+		return client;
+	}
+
 }

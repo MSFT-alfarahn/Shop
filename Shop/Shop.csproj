@@ -71,6 +71,11 @@
 	  <PackageReference Include="CommunityToolkit.Maui.Core" Version="1.0.0-rc2" />
 	  <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-rc2" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
+	  <PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0-beta1" />
+	  <PackageReference Include="Microsoft.ApplicationInsights.EventCounterCollector" Version="2.21.0-beta1" />
+	  <PackageReference Include="Microsoft.ApplicationInsights.PerfCounterCollector" Version="2.21.0-beta1" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.ApplicationInsights" Version="2.21.0-beta1" />
+	  <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0-preview.3.22175.4" />
 	</ItemGroup>
 
 	<ItemGroup>

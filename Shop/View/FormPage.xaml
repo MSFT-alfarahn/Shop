@@ -19,7 +19,8 @@
                 Text="Dynamic Fruit"  />
         </StackLayout>
     </Shell.TitleView>
-    <StackLayout>
+    <StackLayout
+        Padding="20">
         <Label Text="Welcome to .NET MAUI!"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
@@ -35,9 +36,15 @@
             Command="{Binding SubmitCommand}"
             IsEnabled="{Binding NotBusy}"
             Text="Submit"/>
-        <ActivityIndicator
+        <ActivityIndicator     
             HeightRequest="100"
             WidthRequest="100"
+            IsVisible="{Binding IsBusy}"
             IsRunning="{Binding IsBusy}"/>
+        <Button
+            Margin="0,10,0,0"
+            Text="Kill CPU 10 Seconds"
+            BackgroundColor="Red"
+            Command="{Binding KillCPUCommand}"/>
     </StackLayout>
 </ContentPage>
