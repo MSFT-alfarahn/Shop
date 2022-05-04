@@ -11,9 +11,9 @@ public class FruitTemplateSelector : DataTemplateSelector
     {
         if (item.GetType() == typeof(Guava))
             return GuavaTemplate;
-        else if (item.GetType() == typeof(WatermelomTemplate))
+        else if (item.GetType() == typeof(Watermelon))
             return WatermelonTemplate;
-        else if (item.GetType() == typeof(BananasTemplate))
+        else if (item.GetType() == typeof(Bananas))
             return BananasTemplate;
         else
             return BananasTemplate;

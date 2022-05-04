@@ -11,15 +11,30 @@
     <ContentPage.Resources>
 
         <DataTemplate x:Key="BananasTemplate">
-            <Label Text="Bananas"/>
+            <AbsoluteLayout Margin="20">
+                <BoxView Color="Yellow"
+                   AbsoluteLayout.LayoutBounds="0, 10, 200, 5" />
+                <BoxView Color="Orange"
+                   AbsoluteLayout.LayoutBounds="0, 20, 200, 5" />
+                <BoxView Color="Orange"
+                   AbsoluteLayout.LayoutBounds="10, 0, 5, 65" />
+                <BoxView Color="Yellow"
+                   AbsoluteLayout.LayoutBounds="20, 0, 5, 65" />
+                <Label 
+                   Margin="20"
+                   Text="Banana Template"
+                   FontSize="24"
+                   FontFamily="JuneGull"
+                   AbsoluteLayout.LayoutBounds="30, 25" />
+            </AbsoluteLayout>
         </DataTemplate>
 
         <DataTemplate x:Key="WatermelonTemplate">
-            <Label Text="Bananas"/>
+            <Label Text="WaterMelon"/>
         </DataTemplate>
         
         <DataTemplate x:Key="GuavaTemplate">
-            <Label Text="Bananas"/>
+            <Label Text="Guava"/>
         </DataTemplate>
         
         <view:FruitTemplateSelector 
@@ -43,27 +58,32 @@
         </StackLayout>
     </Shell.TitleView>
     <StackLayout>
-        <FlexLayout BindableLayout.ItemsSource="{Binding ChosenFruit}"
-                        BindableLayout.ItemTemplateSelector="{StaticResource FruitTemplateSelector}"
-                        Wrap="Wrap"
-                        JustifyContent="Start"
-                        Margin="0,10,0,0" />
+        <FlexLayout 
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            BindableLayout.ItemsSource="{Binding ChosenFruit}"
+            BindableLayout.ItemTemplateSelector="{StaticResource FruitTemplateSelector}"
+            Wrap="Wrap"
+            JustifyContent="Start"/>
 
         <StackLayout
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="End"
             Orientation="Horizontal">
             <Button  
+                Command="{Binding ChooseBananasCommand}"
                 Margin="10,10,5,10"
                 BackgroundColor="Yellow"
                 TextColor="Black"
                 Text="Bananas"/>
             <Button
+                Command="{Binding ChooseGuavaCommand}"
                 BackgroundColor="Pink"
                 TextColor="Black"
                 Margin="5,10,5,10"
                 Text="Guava"/>
             <Button
+                Command="{Binding ChooseWatermelonCommand}"
                 BackgroundColor="GreenYellow"
                 TextColor="Black"
                 Margin="5,10,5,10"

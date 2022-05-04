@@ -6,7 +6,7 @@ namespace Shop.ViewModel;
 public partial class DynamicFruitViewModel :  BaseViewModel
 {
     [ObservableProperty]
-    private List<Fruit> chosenFruit;
+    private List<Fruit> chosenFruit = new List<Fruit> { new Watermelon() };
 
     [ICommand]
     private void ChooseWatermelon()
