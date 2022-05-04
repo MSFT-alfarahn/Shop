@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Shop.ViewModel"
+             xmlns:translate="clr-namespace:Shop.Resources"
              x:Class="Shop.FormPage"
              Title="FormPage">
     <ContentPage.BindingContext>
@@ -21,6 +22,7 @@
     <StackLayout
         Padding="20">
         <Label  x:Name="namelabal"
+                Text="{x:Static translate:AppResources.Welcome}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         <Entry
