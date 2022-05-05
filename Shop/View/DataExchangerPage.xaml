@@ -2,9 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customview="clr-namespace:Shop.View.Custom"
+             xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="Shop.DataExchangerPage"
              Title="DataExchangerPage">
-    <StackLayout>
+
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+            <Setter Property="FontSize" Value="50"/>
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout
+        x:Name="stack">
         <customview:CustomEntry
             FontSize="Large"
             PlaceholderColor="Gray"
@@ -23,5 +35,16 @@
         <Button
             Text="Display"
             Command="{Binding DisplaySheetCommand}"/>
+
+        <Entry>
+            <Entry.Behaviors>
+                <toolkit:RequiredStringValidationBehavior 
+                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                ValidStyle="{StaticResource ValidEntryStyle}"
+                Flags="ValidateOnValueChanged"
+                RequiredString="MAGIC ANSWER" />
+            </Entry.Behaviors>
+        </Entry>
+
     </StackLayout>
 </ContentPage>

@@ -76,6 +76,7 @@
 	  <PackageReference Include="Microsoft.ApplicationInsights.EventCounterCollector" Version="2.21.0-beta1" />
 	  <PackageReference Include="Microsoft.ApplicationInsights.PerfCounterCollector" Version="2.21.0-beta1" />
 	  <PackageReference Include="Microsoft.Extensions.Logging.ApplicationInsights" Version="2.21.0-beta1" />
+	  <PackageReference Include="Microsoft.Toolkit" Version="7.1.2" />
 	  <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0-preview.3.22175.4" />
 	</ItemGroup>
 

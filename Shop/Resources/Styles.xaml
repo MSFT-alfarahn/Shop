@@ -146,7 +146,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Entry">
+    <!--Style TargetType="Entry">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14" />
@@ -170,7 +170,7 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
-    </Style>
+    </Style-->
 
     <Style TargetType="Frame">
         <Setter Property="HasShadow" Value="False" />
