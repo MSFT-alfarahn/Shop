@@ -5,19 +5,25 @@ namespace Shop.ViewModel;
 
 public partial class DataExchangerViewModel : BaseViewModel, IAsyncDisposable
 {
+    [ObservableProperty]
+    private string device;
 
     [ObservableProperty]
     public string message;
     // connection string to your Service Bus namespace
-    static string connectionString = "Endpoint=sb://mobileshop.servicebus.windows.net/;SharedAccessKeyName=someKey;SharedAccessKey=li7j4whIdrbMH6uedrC5XFeJukgeh8VaTUGOYmbeVik=";
+    static string connectionString = "Endpoint=sb://fedex-test.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=UvGmw9duXvzNEVcNvhDFVZ5/vc9bWu3uMJSzDp9eZg4=";
 
     // name of your Service Bus queue
-    static string queueName = "somequeue";
+    // name of your Service Bus topic
+    static string topicName = "mytopic";
 
     // the client that owns the connection and can be used to create senders and receivers
     static ServiceBusClient client;
 
-    // the processor that reads and processes messages from the queue
+    // name of the subscription to the topic
+    static string subscriptionName = "mysubscription";
+
+    // the processor that reads and processes messages from the subscription
     static ServiceBusProcessor processor;
 
     public DataExchangerViewModel()
@@ -27,11 +33,15 @@ public partial class DataExchangerViewModel : BaseViewModel, IAsyncDisposable
 
     private async void RegisterDataListener()
     {
-        // Create the client object that will be used to create sender and receiver objects
+        // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+        // of the application, which is best practice when messages are being published or read
+        // regularly.
+        //
+        // Create the clients that we'll use for sending and processing messages.
         client = new ServiceBusClient(connectionString);
 
         // create a processor that we can use to process the messages
-        processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+        processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
 
         try
         {
@@ -43,10 +53,8 @@ public partial class DataExchangerViewModel : BaseViewModel, IAsyncDisposable
 
             // start processing 
             await processor.StartProcessingAsync();
-
-
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             Message = e.Message;
         }
