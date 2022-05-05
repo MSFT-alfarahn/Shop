@@ -1,31 +1,42 @@
 ﻿
 using Azure.Messaging.ServiceBus;
+using CommunityToolkit.Maui.Alerts;
 
 namespace Shop.ViewModel;
 
 public partial class DataExchangerViewModel : BaseViewModel//, IAsyncDisposable
 {
+    [ICommand]
+    public void DisplaySheet()
+        => Toast.Make("hello").Show();
+
     [ObservableProperty]
     private string device;
 
     [ObservableProperty]
     public string message;
-    // connection string to your Service Bus namespace
-    static string connectionString = "Endpoint=sb://fedex-test.servicebus.windows.net/;SharedAccessKeyName=newpolicy;SharedAccessKey=7swqsMHjIkMwMD1DJSh98j+P0gAv/oTNZHHtOC2VHAM=;EntityPath=newtopic";
 
-    // name of your Service Bus topic
-    static string topicName = "newtopic";
+    // connection string to your Service Bus namespace
+    string connectionString = "Endpoint=sb://fedex-test.servicebus.windows.net/;SharedAccessKeyName=this-should-be-encrypted-on-device;SharedAccessKey=MDEezh1ANZ3f23PfTLiZH2f/ROH01hXCeW7tpAEx6iU=;EntityPath=new-products-topic";
+
+    // name of the Service Bus topic
+    string topicName = "new-products-topic";
+
+    // name of the subscription to the topic
+    string subscriptionName = "basictier";
 
     // the client that owns the connection and can be used to create senders and receivers
-    static ServiceBusClient client;
+    ServiceBusClient client;
 
-    // the sender used to publish messages to the topic
-    static ServiceBusSender sender;
+    // the processor that reads and processes messages from the subscription
+    ServiceBusProcessor processor;
 
-    // number of messages to be sent to the topic
-    private const int numOfMessages = 3;
+    public DataExchangerViewModel()
+    {
+        RegisterServiceBusEventhandler();
+    }
 
-    static async Task Main()
+    private async void RegisterServiceBusEventhandler()
     {
         // The Service Bus client types are safe to cache and use as a singleton for the lifetime
         // of the application, which is best practice when messages are being published or read
@@ -33,38 +44,63 @@ public partial class DataExchangerViewModel : BaseViewModel//, IAsyncDisposable
         //
         // Create the clients that we'll use for sending and processing messages.
         client = new ServiceBusClient(connectionString);
-        sender = client.CreateSender(topicName);
 
-        // create a batch 
-        using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
-
-        for (int i = 1; i <= numOfMessages; i++)
-        {
-            // try adding a message to the batch
-            if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
-            {
-                // if it is too large for the batch
-                throw new Exception($"The message {i} is too large to fit in the batch.");
-            }
-        }
+        // create a processor that we can use to process the messages
+        processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
 
         try
         {
-            // Use the producer client to send the batch of messages to the Service Bus topic
-            await sender.SendMessagesAsync(messageBatch);
-            Console.WriteLine($"A batch of {numOfMessages} messages has been published to the topic.");
+            // add handler to process messages
+            processor.ProcessMessageAsync += MessageHandler;
+
+            // add handler to process any errors
+            processor.ProcessErrorAsync += ErrorHandler;
+
+            // start processing 
+            await processor.StartProcessingAsync();
+
+         /*   Console.WriteLine("Wait for a minute and then press any key to end the processing");
+            Console.ReadKey();
+
+            // stop processing 
+            Console.WriteLine("\nStopping the receiver...");
+            await processor.StopProcessingAsync();
+            Console.WriteLine("Stopped receiving messages");*/
         }
         finally
         {
             // Calling DisposeAsync on client types is required to ensure that network
             // resources and other unmanaged objects are properly cleaned up.
-            await sender.DisposeAsync();
-            await client.DisposeAsync();
+           // await processor.DisposeAsync();
+           // await client.DisposeAsync();
         }
-
-        Console.WriteLine("Press any key to end the application");
-        Console.ReadKey();
     }
 
 
+    // handle received messages
+    async Task MessageHandler(ProcessMessageEventArgs args)
+    {
+        string body = args.Message.Body.ToString();
+        object token;
+        args.Message.ApplicationProperties.TryGetValue("token", out token);
+
+
+        Console.WriteLine($"Received: {body} from subscription: {subscriptionName}");
+
+        if((string)token == "deviceone")
+            Message = body;
+
+        // complete the message. messages is deleted from the subscription. 
+        await args.CompleteMessageAsync(args.Message);
+    }
+
+    // handle any errors when receiving messages
+    Task ErrorHandler(ProcessErrorEventArgs args)
+    {
+        Message = args.Exception.ToString();
+        Console.WriteLine(args.Exception.ToString());
+        return Task.CompletedTask;
+    }
+
+  
 }

@@ -20,5 +20,8 @@
                 FontSize="Large"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
+        <Button
+            Text="Display"
+            Command="{Binding DisplaySheetCommand}"/>
     </StackLayout>
 </ContentPage>
