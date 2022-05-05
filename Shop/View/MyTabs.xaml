@@ -6,6 +6,11 @@
              Title="MyTabs">
     <TabBar>
         <Tab
+            Title="Data Exchanger"
+            Icon="bananas.png">
+            <ShellContent ContentTemplate="{DataTemplate view:DataExchangerPage}"/>
+        </Tab>
+        <Tab
             Title="Dynamic Fruit"
             Icon="bananas.png">
             <ShellContent ContentTemplate="{DataTemplate view:DynamicFruitPage}"/>
