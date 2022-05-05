@@ -66,6 +66,10 @@ public static class MauiProgram
 		builder.Services.AddSingleton<FormPage>();
 		Routing.RegisterRoute(nameof(FormPage), typeof(FormPage));
 
+		builder.Services.AddSingleton<DataExchangerViewModel>();
+		builder.Services.AddSingleton<DataExchangerPage>();
+		Routing.RegisterRoute(nameof(DataExchangerPage), typeof(DataExchangerPage));
+
 		return builder.Build();
 	}
 
