@@ -44,6 +44,13 @@ public partial class FormViewModel : BaseViewModel
     [ICommand]
     public void ThrowUnhandled()
     {
-        int.Parse("invalid");
+        try
+        {
+            int.Parse("invalid");
+        }
+        catch (Exception e)
+        {
+            MauiProgram.Telemetry.TrackException(e);        
+        }
     }
 }
