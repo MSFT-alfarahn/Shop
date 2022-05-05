@@ -62,10 +62,15 @@ public partial class DataExchangerViewModel : BaseViewModel, IAsyncDisposable
     async Task MessageHandler(ProcessMessageEventArgs args)
     {
         string body = args.Message.Body.ToString();
-        Console.WriteLine($"Received: {body}");
+        var dictionary = args?.Message?.ApplicationProperties;
+        object val;
+        if (dictionary.TryGetValue("token", out val))
+        {
+            if ((string)val == "general" || (string)val == Device)
+                Message = body;
 
-        Message = body;
-
+            // "tester" key exists and contains "testing" value
+        }
 
         // complete the message. messages is deleted from the queue. 
         await args.CompleteMessageAsync(args.Message);

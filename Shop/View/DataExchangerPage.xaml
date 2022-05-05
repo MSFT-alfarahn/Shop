@@ -4,12 +4,19 @@
              x:Class="Shop.DataExchangerPage"
              Title="DataExchangerPage">
     <StackLayout>
-        <Label Text="Data Received:"
+        <Entry
+            FontSize="Large"
+            PlaceholderColor="Gray"
+            Placeholder="Type Device Tag"
+            Text="{Binding Device}"/>
+        <Label 
+                FontSize="Large"
+                Text="Data Received:"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         <Label 
                 Text="{Binding Message}"
-                FontSize="30"
+                FontSize="Large"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
     </StackLayout>
